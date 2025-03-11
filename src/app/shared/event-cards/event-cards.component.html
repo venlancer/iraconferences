@@ -1,0 +1,23 @@
+<div class="card shadow-sm">
+  <div class="card-header p-0">
+    <img [src]="getPublicUrl(imageSrc)" alt="Event Image">
+    <ng-template #noImage>
+      <div class="no-image-placeholder">
+        No Image Available
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="card-body position-relative">
+    <h3 class="card-title font-weight-bold">{{ title }}</h3>
+    <p class="card-text">{{ description }}</p>
+    <p class="font-weight-bold">Organized by: {{ organizer }}</p>
+    <small class="text-muted">Start Date: {{ date | date: 'longDate' }}</small><br>
+    <small class="text-muted">End Date: {{ edate | date: 'longDate' }}</small>
+
+    <!-- View More Button -->
+    <button class="btn btn-primary position-absolute view-more-btn">
+      View More
+    </button>
+  </div>
+</div>

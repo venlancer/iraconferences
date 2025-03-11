@@ -1,0 +1,63 @@
+/* General styles for the body */
+body {
+  margin-top: 60px; /* Adjust for navbar height */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  z-index: 1000;
+  transition: background-color 0.5s ease, box-shadow 0.3s ease;
+  background-color: transparent; /* Start with transparent background */
+}
+
+.navbar.scrolled {
+  background-color: #172b4d; /* Set background color when scrolled */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+}
+
+.navbar-brand {
+  margin-left: 0;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #28a745; /* Light green on hover */
+}
+
+.navbar-nav .nav-item {
+  margin: 0 10px;
+}
+
+.navbar-nav .nav-link.active {
+  color: #28a745; /* Green for the active link */
+  font-weight: bold;
+}
+
+/* Social media icons */
+.nav-link-icon i {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.nav-link-icon:hover i {
+  color: #28a745; /* Light green on hover */
+}
+
+/* Media queries for responsive design */
+@media (min-width: 992px) {
+  .navbar-collapse {
+    justify-content: center;
+  }
+
+  .d-lg-flex {
+    justify-content: flex-end;
+  }
+}

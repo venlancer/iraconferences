@@ -1,0 +1,51 @@
+<div class="tab-container">
+  <h2 class="heading">Conferences & Webinars Archive</h2>
+
+  <!-- Search Bar -->
+  <div class="search-bar mb-4">
+    <input 
+      type="text" 
+      class="form-control" 
+      placeholder="Search events..." 
+      [(ngModel)]="searchQuery" 
+      (input)="filterEvents()"
+      [ngClass]="{'search-animation': searchQuery.length > 0}" />
+  </div>
+
+  <!-- Tab Navigation -->
+  <ul ngbNav #navTabs="ngbNav" class="nav-pills nav-fill custom-nav" [(activeId)]="activeTab" (activeIdChange)="onTabChange($event)">
+    <li *ngFor="let tab of tabs" [ngbNavItem]="tab.id">
+      <a ngbNavLink class="btn custom-btn">{{ tab.label }}</a>
+      <ng-template ngbNavContent>
+        <div class="row justify-content-center">
+          <div *ngFor="let event of tab.events" class="col-md-3 mb-4 card-item">
+            <app-event-cards 
+              (click)="navigateToPage(event.title, event)"
+              [imageSrc]="event.image"
+              [title]="event.title"
+              [description]="event.short_description"
+              [organizer]="event.organised_by"
+              [date]="event.start_date"
+              [edate]="event.end_date">
+            </app-event-cards>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+  
+
+  <!-- Display the selected tab content -->
+  <div [ngbNavOutlet]="navTabs"></div>
+</div>
+<!-- Loading Spinner -->
+<div *ngIf="isLoading" class="spinner-container">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<!-- No Data Message -->
+<div *ngIf="!isLoading && noDataAvailable" class="no-data-message">
+  No Data Available
+</div>
